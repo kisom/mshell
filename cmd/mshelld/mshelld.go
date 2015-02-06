@@ -119,6 +119,7 @@ func session() {
 			log.Print("failed to receive message")
 			return
 		}
+		log.Printf("message %d received", sch.RCtr())
 
 		switch m.Type {
 		case schannel.ShutdownMessage:
