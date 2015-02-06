@@ -134,7 +134,6 @@ func session() {
 				os.Remove(tfname)
 				return
 			}
-			log.Printf("PATH: %s", os.Getenv("PATH"))
 			cmd := exec.Command("sh", tfname)
 			log.Printf("command line: %s", m.Contents)
 			out, err := cmd.CombinedOutput()

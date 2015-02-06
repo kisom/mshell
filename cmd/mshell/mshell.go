@@ -11,6 +11,7 @@ import (
 	"net"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/gokyle/goconfig"
 	"github.com/kisom/die"
@@ -95,6 +96,13 @@ func main() {
 	defer func() {
 		sch.Close()
 		conn.Close()
+	}()
+
+	go func() {
+		for {
+			<-time.After(15 * time.Minute)
+			sch.Rekey()
+		}
 	}()
 
 	for {
